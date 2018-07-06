@@ -3,7 +3,7 @@ package kuuWorld.Entity;
 
 
 /**
- * REST Web Service
+ * Entity
  *
  * @author kuuku
  */
@@ -16,6 +16,8 @@ package kuuWorld.Entity;
 
     public String SecondName;
 
-    public String Address;
+    public String PostCode;
+    
+    public Double Balance;
 
  }

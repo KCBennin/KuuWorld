@@ -5,7 +5,7 @@
  */
 package kuuWorld;
 
-import java.kuuWorld.Service.BasketService;
+import kuuWorld.Service.BasketService;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
