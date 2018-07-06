@@ -17,8 +17,14 @@ may be declined if the customer does not have sufficient funds
 Resources Used: 
 
 https://www.w3schools.com/howto/howto_css_cards.asp
+<br></br>
 https://www.tutorialspoint.com/html/html_forms.htm
+<br></br>
 https://www.tutorialspoint.com//maven/maven_netbeans.htm
+<br></br>
 https://www.tutorialspoint.com//maven/index.htm
+<br></br>
 https://www.tutorialspoint.com/java_essential_training/index.asp
+<br></br>
 https://www.tutorialspoint.com/java_generics/java_generics_list.htm
+<br></br>
