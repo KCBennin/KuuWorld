@@ -6,26 +6,26 @@
 package kuuWorld.Repository;
 
 import java.util.List;
-import kuuWorld.Entity.AccountEntity;
+import kuuWorld.Entity.StockEntity;
 import kuuWorld.Repository.Interfaces.IRepository;
 
 /**
  *
  * @author kuuku
  */
-public class AccountRepository implements IRepository<AccountEntity> {
+public class StockRepository implements IRepository<StockEntity> {
 
-    public AccountRepository() {
+    public StockRepository(){
         
     }
     
     @Override
-    public void AddResource(AccountEntity Entity) {
+    public void AddResource(StockEntity Entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void AddResourceRange(List<AccountEntity> EntityRange) {
+    public void AddResourceRange(List<StockEntity> EntityRange) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -35,17 +35,18 @@ public class AccountRepository implements IRepository<AccountEntity> {
     }
 
     @Override
-    public void RemoveResourceRange(List<AccountEntity> EntityRange) {
+    public void RemoveResourceRange(List<StockEntity> EntityRange) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public AccountEntity GetEntity(int Id) {
+    public StockEntity GetEntity(int Id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<AccountEntity> GetAllResources() {
+    public List<StockEntity> GetAllResources() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    } 
+    }
+    
 }
