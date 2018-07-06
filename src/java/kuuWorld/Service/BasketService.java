@@ -4,17 +4,20 @@
  * @author kuuku
  */
 
- package java.kuuWorld.Service;
+ package kuuWorld.Service;
 
-import java.kuuWorld.Entity.AccountEntity;
-import java.kuuWorld.Entity.BasketEntity;
+import kuuWorld.Entity.BasketEntity;
 import kuuWorld.Repository.IRepository;
 
 public class BasketService {
 
     IRepository<BasketEntity> BasketRepository;
 
-    public AccountEntity GetAccount(int Id) {
+    public BasketService(IRepository<BasketEntity> BasketRepository) {
+        this.BasketRepository = BasketRepository;
+    }
+    
+    public BasketEntity GetAccount(int Id) {
         BasketEntity Entity = BasketRepository.GetEntity(Id);
         return Entity;
     }
@@ -26,8 +29,12 @@ public class BasketService {
     public Integer QuantityOfItemsInBasket() {
         return null;
     }
+    
+    public void InitiateCheckout(){
+        
+    }
 
-    public void RemoveAccount(int Id) {
+    public void RemoveItemFromBasket(int Id) {
         BasketRepository.RemoveResource(Id);
     }
  }
