@@ -37,9 +37,8 @@ public class AccountResource {
      * @return an instance of java.lang.String
      */
     @GET
-    @Path("{Id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAccount(Integer Id) {
+    public String getAccount(@PathParam("Id") Integer Id) {
         //TODO return proper representation object
         
         return "";
@@ -52,5 +51,6 @@ public class AccountResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateAccount(String content) {
+
     }
 }
