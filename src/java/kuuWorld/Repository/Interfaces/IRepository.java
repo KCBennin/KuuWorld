@@ -1,5 +1,5 @@
 
-package kuuWorld.Repository;
+package kuuWorld.Repository.Interfaces;
 
 import java.util.List;
 
