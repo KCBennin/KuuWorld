@@ -5,38 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <style>
-            .col-1-5 {
-                width: 20%;
-                float: left;
-            }
-            
-            .col-2-5 {
-                width: 40%;
-                float: left;
-            }
-            
-            .col-3-5 {
-                width: 60%;
-                float: left;
-            }
-            
-            .col-4-5 {
-                width: 80%;
-                float: left;
-            }
-            
-            .col-5-5 {
-                width: 100%;
-                float: left;
-            }
-            
-            .col-5-5 {
-                width: 100%;
-            }
-        
-        </style>
+    <head>    
         <title>World</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,11 +16,75 @@ and open the template in the editor.
         <link rel="import" href="bcomponents/paper-styles/typography.html">
         <link rel="import" href="components/paper-button/paper-button.html"> 
         <link rel="import" href="hello-component.html">
+        <link rel="stylesheet" href="main.css" type="text/css"/>
+        <link rel="stylesheet" href="sidebar.css" type="text/css"/>
+        <link rel="stylesheet" href="card.css" type="text/css"/>
     </head>
     <body>
-        <h1>Online Shopping Centre</h1>
-        <div class = "col-1-5">
-            <h2>Categories</h2>
+        <div class="topnav">
+            <a class="active" href="">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <input type="text" placeholder="Search..">
+        </div>    
+        <h1 class="title">Online Shopping Centre</h1>
+        <hr/>
+        <h2 class="title">Fruits</h2>
+        <div class="card col-1-5">          
+            <div class="container">
+              <h4><b>Apple</b></h4> 
+              <p>£0.99</p> 
+              <button onClick="purchaseItem">Buy Now</button>
+            </div>
+        </div>
+        <div class="card col-1-5">          
+            <div class="container">
+              <h4><b>Banana</b></h4> 
+              <p>£0.99</p> 
+              <button onClick="purchaseItem">Buy Now</button>
+            </div>
+        </div>
+        <div class="card col-1-5">          
+            <div class="container">
+              <h4><b>Grapes</b></h4> 
+              <p>£0.99</p> 
+              <button onClick="purchaseItem">Buy Now</button>
+            </div>
+        </div>
+        <div class="card col-1-5">          
+            <div class="container">
+              <h4><b>Orange</b></h4> 
+              <p>£0.99</p> 
+              <button onClick="purchaseItem">Buy Now</button>
+            </div>
+        </div>
+            <div class="card col-1-5">          
+            <div class="container">
+              <h4><b>Pear</b></h4> 
+              <p>£0.99</p> 
+              <button onClick="purchaseItem">Buy Now</button>
+            </div>
+        </div>
+        <div class="card col-1-5">          
+            <div class="container">
+              <h4><b>Strawberry</b></h4> 
+              <p>£0.99</p> 
+              <button onClick="purchaseItem">Buy Now</button>
+            </div>
+        </div>
+        <div class="card col-1-5">          
+            <div class="container">
+              <h4><b>Melon</b></h4> 
+              <p>£0.99</p> 
+              <button onClick="purchaseItem">Buy Now</button>
+            </div>
+        </div>
+        <div class="card col-1-5">          
+            <div class="container">
+              <h4><b>Mango</b></h4> 
+              <p>£0.99</p> 
+              <button onClick="purchaseItem">Buy Now</button>
+            </div>
         </div>
     </body>
 </html>
