@@ -1,0 +1,6 @@
+<class name="AccountEntity" table="Account">
+    <id name="Id" column="Id"></id>
+    <property name="FirstName" type="string" column="FirstName"/>
+    <property name="SecondName" type = "string" column="SecondName"/>
+    <property name="Address" type="string" column="Address"/>
+</class>
