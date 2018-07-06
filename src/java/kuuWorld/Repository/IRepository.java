@@ -1,5 +1,8 @@
 
-package java.kuuWorld.Repository;
+package kuuWorld.Repository;
+
+import java.util.List;
+
 
 public interface IRepository<T> extends IReadOnlyRepository<T> {
 
@@ -7,7 +10,7 @@ public interface IRepository<T> extends IReadOnlyRepository<T> {
 
     public void AddResourceRange(List<T> EntityRange);
 
-    public void RemoveResource(T Entity);
+    public void RemoveResource(Integer Id);
 
     public void RemoveResourceRange(List<T> EntityRange);
 }
