@@ -1,6 +1,6 @@
 
 
-package java.kuuWorld.Entity;
+package kuuWorld.Entity;
 
 public class BasketEntity {
     public int Id;

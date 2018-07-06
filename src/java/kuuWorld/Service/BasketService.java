@@ -8,7 +8,7 @@
 
 import java.kuuWorld.Entity.AccountEntity;
 import java.kuuWorld.Entity.BasketEntity;
-import java.kuuWorld.Repository.IRepository;
+import kuuWorld.Repository.IRepository;
 
 public class BasketService {
 
