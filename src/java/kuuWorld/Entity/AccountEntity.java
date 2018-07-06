@@ -1,4 +1,4 @@
-package java.kuuWorld.Entity;
+package kuuWorld.Entity;
 
 
 

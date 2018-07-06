@@ -49,10 +49,5 @@ public class KuuWorld {
     @PUT
     @Consumes(MediaType.TEXT_HTML)
     public void putHtml(String content) {
-    }
-   
-}
-
-public class Account {
-    
+    }  
 }

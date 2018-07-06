@@ -1,5 +1,5 @@
 
-package java.kuuWorld.Entity;
+package kuuWorld.Entity;
 
 public class CustomerEntity {
     public int Id;

@@ -5,6 +5,7 @@
  */
 package kuuWorld;
 
+import java.kuuWorld.Service.BasketService;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -13,6 +14,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import kuuWorld.Repository.IRepository;
 
 /**
  * REST Web Service
@@ -28,7 +30,9 @@ public class CheckoutResource {
     /**
      * Creates a new instance of CheckoutResource
      */
-    public CheckoutResource() {
+    public CheckoutResource(BasketService Basket) 
+    {
+        
     }
 
     /**
