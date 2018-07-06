@@ -37,7 +37,7 @@ public class CustomerResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    public String getCustomer() {
         //TODO return proper representation object
         throw new UnsupportedOperationException();
     }
@@ -48,6 +48,7 @@ public class CustomerResource {
      */
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    public void updateCustomer(CustomerEntity content) {
+        
     }
 }
