@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database Connection Settings -->
+        <property name="connection.driven_class">org.h2.Driver</property>
+        <property name="connection.url">jdbc:h2:mem:db1; DB_CLOSE_DELAY=-1; MVCC=TRUE </property>
+        <property name="conneciton.username">sa</property>
+        <property name="connection.password">element101</property>
+    </session-factory>
+</hibernate-configuration>
+
+<root>
+    
+</root>

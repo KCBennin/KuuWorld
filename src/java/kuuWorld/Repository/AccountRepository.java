@@ -6,8 +6,10 @@
 package kuuWorld.Repository;
 
 import java.util.List;
+import kuuWorld.SessionBuilder;
 import kuuWorld.Entity.AccountEntity;
 import kuuWorld.Repository.Interfaces.IRepository;
+import org.hibernate.Session;
 
 /**
  *
@@ -15,37 +17,65 @@ import kuuWorld.Repository.Interfaces.IRepository;
  */
 public class AccountRepository implements IRepository<AccountEntity> {
 
-    public AccountRepository() {
-        
+    private final Session AccountSession;
+    
+    public AccountRepository() {      
+        this.AccountSession = SessionBuilder.InitializeSession();
     }
     
     @Override
     public void AddResource(AccountEntity Entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (Entity != null) {
+            this.AccountSession.save(Entity);
+            this.AccountSession.getTransaction();
+        }
     }
 
     @Override
     public void AddResourceRange(List<AccountEntity> EntityRange) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(EntityRange != null) {
+            this.AccountSession.save(EntityRange);
+            this.AccountSession.getTransaction().commit();
+        }
     }
 
     @Override
-    public void RemoveResource(Integer Id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void RemoveResource(Integer Id) {     
+        AccountEntity Entity = (AccountEntity) this.AccountSession.get(AccountEntity.class, Id);
+        this.AccountSession.delete(Entity);
+        this.AccountSession.getTransaction();   
     }
 
     @Override
     public void RemoveResourceRange(List<AccountEntity> EntityRange) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try  {
+            if (EntityRange != null) {
+                for (AccountEntity Account:EntityRange) {
+                    this.AccountSession.delete(Entity);
+                    this.AccountSession.getTransaction();
+                }
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public AccountEntity GetEntity(int Id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            AccountEntity Entity = (AccountEntity) this.AccountSession.get(AccountEntity.class, Id);
+            return Entity;
+        }
+
+        catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public List<AccountEntity> GetAllResources() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<AccountEntity> Accounts = this.AccountSession.createCriteria(AccountEntity.class).list();
+        return Accounts;
     } 
 }

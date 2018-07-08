@@ -1,15 +1,18 @@
 package kuuWorld.Entity;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
-/**
- * Entity
- *
- * @author kuuku
- */
-
+@Table(name="Account")
  public class AccountEntity {
 
+    public AccountEntity(String FirstName, String SecondName) {
+        this.FirstName = FirstName;
+        this.SecondName = SecondName;
+    }
+     
+    @Id
     public int Id;
 
     public String FirstName;

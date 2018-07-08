@@ -11,9 +11,12 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
+import org.hibernate.cfg.Configuration;
 
 /**
  * REST Web Service
@@ -30,6 +33,7 @@ public class CustomerResource {
      * Creates a new instance of CustomerResource
      */
     public CustomerResource() {
+        final Configuration configuration = new Configuration().configure();
     }
 
     /**
@@ -50,6 +54,18 @@ public class CustomerResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateCustomer(CustomerEntity content) {
+        
+    }
+    
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public void deleteCustomer(CustomerEntity Customer){
+        
+    }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public void addCustomer(CustomerEntity Customer) {
         
     }
 }

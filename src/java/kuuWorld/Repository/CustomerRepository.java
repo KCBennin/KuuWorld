@@ -6,8 +6,10 @@
 package kuuWorld.Repository;
 
 import java.util.List;
-import kuuWorld.Entity.AccountEntity;
 import kuuWorld.Entity.CustomerEntity;
+import kuuWorld.Repository.Interfaces.IRepository;
+import org.hibernate.Session;
+import kuuWorld.SessionBuilder;
 
 /**
  *
@@ -15,20 +17,42 @@ import kuuWorld.Entity.CustomerEntity;
  */
 public class CustomerRepository implements IRepository<CustomerEntity> 
 {
+    private final Session CustomerSession;
+    public CustomerRepository() {
+        this.CustomerSession = SessionBuilder.IntializeSession();
+    }
 
     @Override
-    public void AddResource(CustomerEntity Entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void AddResource(CustomerEntity Entity) {       
+        try {
+            if (Entity != null) {
+                this.CustomerSession.save(Entity);
+                this.CustomerSession.getTransaction();
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public void AddResourceRange(List<CustomerEntity> EntityRange) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            if (EntityRange != null) {
+                for (CustomerEntity Customer:EntityRange){
+                    this.CustomerSession.save(Customer);
+                    this.CustomerSession.getTransaction();
+                }
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public void RemoveResource(Integer Id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        CustomerEntity Entity = (CustomerEntity) this.CustomerSession.get(CustomerEntity.class,Id);
+        this.CustomerSession.delete(Entity);
+        this.CustomerSession.getTransaction();
     }
 
     @Override
