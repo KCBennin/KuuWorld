@@ -12,7 +12,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author ademolaafolabi
+ * @author kuuku
  */
 public class SessionBuilder {
     
@@ -25,7 +25,5 @@ public class SessionBuilder {
         final Session FactorySession = Factory.openSession();
                
         return FactorySession;
-    }
-    
-    
+    }  
 }

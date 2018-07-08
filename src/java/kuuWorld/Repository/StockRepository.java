@@ -6,8 +6,10 @@
 package kuuWorld.Repository;
 
 import java.util.List;
+import kuuWorld.SessionBuilder;
 import kuuWorld.Entity.StockEntity;
 import kuuWorld.Repository.Interfaces.IRepository;
+import org.hibernate.Session;
 
 /**
  *
@@ -15,38 +17,79 @@ import kuuWorld.Repository.Interfaces.IRepository;
  */
 public class StockRepository implements IRepository<StockEntity> {
 
+    private final Session StockSession;
+
     public StockRepository(){
-        
+        this.StockSession = SessionBuilder.InitializeSession();
     }
     
     @Override
-    public void AddResource(StockEntity Entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void AddResource(StockEntity Entity) {        
+        try  {       
+            if (Entity != null) {
+                this.StockSession.save(Entity);
+                this.StockSession.getTransaction();
+            } 
+        } catch(Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
-    public void AddResourceRange(List<StockEntity> EntityRange) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void AddResourceRange(List<StockEntity> EntityRange) {      
+        try  { 
+            if (EntityRange != null) {
+                this.StockSession.save(EntityRange);
+                this.StockSession.getTransaction().commit();
+            } 
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public void RemoveResource(Integer Id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            StockEntity Entity = (StockEntity) this.StockSession.get(AccountEntity.class, Id);
+            this.StockSession.save(Entity);
+            this.StockSession.getTransaction(); 
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public void RemoveResourceRange(List<StockEntity> EntityRange) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try  {
+            if (EntityRange != null) {
+                for (StockEntity Stock:EntityRange) {
+                    this.StockSession.delete(Stock);
+                    this.StockSession.getTransaction();
+                }
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public StockEntity GetEntity(int Id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            StockEntity Entity = (StockEntity) this.StockSession.get(StockEntity.class, Id);
+            return Entity;
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public List<StockEntity> GetAllResources() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List<StockEntity> Stocks = this.StockSession.createCriteria(StockEntity.class).list();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        return Stocks;
     }
     
 }

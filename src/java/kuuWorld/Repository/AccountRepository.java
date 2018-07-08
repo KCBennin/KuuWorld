@@ -47,12 +47,11 @@ public class AccountRepository implements IRepository<AccountEntity> {
     }
 
     @Override
-    public void RemoveResourceRange(List<AccountEntity> EntityRange) {
-        
+    public void RemoveResourceRange(List<AccountEntity> EntityRange) {     
         try  {
             if (EntityRange != null) {
                 for (AccountEntity Account:EntityRange) {
-                    this.AccountSession.delete(Entity);
+                    this.AccountSession.delete(Account);
                     this.AccountSession.getTransaction();
                 }
             }

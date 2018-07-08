@@ -43,31 +43,58 @@ public class CustomerRepository implements IRepository<CustomerEntity>
                     this.CustomerSession.getTransaction();
                 }
             }
-        } catch (Exception e) {
+        }       
+        catch (Exception e) {
             e.getStackTrace();
         }
     }
 
     @Override
     public void RemoveResource(Integer Id) {
-        CustomerEntity Entity = (CustomerEntity) this.CustomerSession.get(CustomerEntity.class,Id);
-        this.CustomerSession.delete(Entity);
-        this.CustomerSession.getTransaction();
+        try {
+            CustomerEntity Entity = (CustomerEntity) this.CustomerSession.get(CustomerEntity.class,Id);
+            this.CustomerSession.delete(Entity);
+            this.CustomerSession.getTransaction();
+        } 
+        catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public void RemoveResourceRange(List<CustomerEntity> EntityRange) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            if (EntityRange != null) {
+               for(CustomerEntity Customer:EntityRange) {
+                   this.CustomerSession.save(Customer);
+                   this.CustomerSession.getTransaction();
+               }
+            }
+        }
+        catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public CustomerEntity GetEntity(int Id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            CustomerEntity Entity = (CustomerEntity) this.CustomerSession.get(CustomerEntity.class, Id);
+            return Entity;
+        }         
+        catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @Override
     public List<CustomerEntity> GetAllResources() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+        try {
+            List<CustomerEntity> Customers = this.CustomerSession.createCriteria(CustomerEntity.class).list();
+            return Customers;
+        }
+        catch (Exception e) {
+            e.getStackTrace();
+        }
+    }  
 }
