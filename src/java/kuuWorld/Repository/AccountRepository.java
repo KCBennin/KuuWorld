@@ -70,6 +70,7 @@ public class AccountRepository implements IRepository<AccountEntity> {
         catch (Exception e) {
             e.getStackTrace();
         }
+        return null;
     }
 
     @Override

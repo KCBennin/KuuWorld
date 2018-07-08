@@ -10,9 +10,13 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import kuuWorld.Entity.AccountEntity;
+import kuuWorld.Repository.AccountRepository;
 
 /**
  * REST Web Service
@@ -24,11 +28,13 @@ public class AccountResource {
 
     @Context
     private UriInfo context;
+    private final AccountRepository Repository;
 
     /**
      * Creates a new instance of AccountResource
      */
     public AccountResource() {
+        this.Repository = new AccountRepository();
     }
 
     /**
@@ -38,19 +44,17 @@ public class AccountResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAccount(@PathParam("Id") Integer Id) {
-        //TODO return proper representation object
-        
-        return "";
+    public AccountEntity getAccount(@PathParam("Id") Integer Id) {
+        AccountEntity Entity = Repository.GetEntity(Id);
+        return Entity;
     }
-
-    /**
-     * PUT method for updating or creating an instance of AccountResource
-     * @param content representation for the resource
-     */
-    @PUT
+  
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void updateAccount(String content) {
-
+    public void addAccount(AccountEntity Entity) {
+        if (Entity != null) {
+            this.Repository.AddResource(Entity);
+        }
     }
+    
 }

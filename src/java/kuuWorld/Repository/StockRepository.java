@@ -9,6 +9,7 @@ import java.util.List;
 import kuuWorld.SessionBuilder;
 import kuuWorld.Entity.StockEntity;
 import kuuWorld.Repository.Interfaces.IRepository;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
@@ -50,7 +51,7 @@ public class StockRepository implements IRepository<StockEntity> {
     @Override
     public void RemoveResource(Integer Id) {
         try {
-            StockEntity Entity = (StockEntity) this.StockSession.get(AccountEntity.class, Id);
+            StockEntity Entity = (StockEntity) this.StockSession.get(StockEntity.class, Id);
             this.StockSession.save(Entity);
             this.StockSession.getTransaction(); 
         } catch (Exception e) {
@@ -80,16 +81,17 @@ public class StockRepository implements IRepository<StockEntity> {
         } catch (Exception e) {
             e.getStackTrace();
         }
+        return null;
     }
 
     @Override
     public List<StockEntity> GetAllResources() {
         try {
             List<StockEntity> Stocks = this.StockSession.createCriteria(StockEntity.class).list();
-        } catch (Exception e) {
+            return Stocks;
+        } catch (HibernateException e) {
             e.getStackTrace();
         }
-        return Stocks;
-    }
-    
+        return null;
+    }    
 }

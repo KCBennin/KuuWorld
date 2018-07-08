@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kuuWorld.Context;
-
-
+package kuuWorld.Dto;
 
 /**
  *
- * @author ademolaafolabi
+ * @author kuuku
  */
-public class AccountContext {
- 
+public class ProductDto {
+    
+    public int Id;
+    
+    public String Title;
+    
+    public Double Price;
     
 }

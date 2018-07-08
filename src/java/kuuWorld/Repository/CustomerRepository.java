@@ -10,6 +10,7 @@ import kuuWorld.Entity.CustomerEntity;
 import kuuWorld.Repository.Interfaces.IRepository;
 import org.hibernate.Session;
 import kuuWorld.SessionBuilder;
+import org.hibernate.HibernateException;
 
 /**
  *
@@ -18,8 +19,9 @@ import kuuWorld.SessionBuilder;
 public class CustomerRepository implements IRepository<CustomerEntity> 
 {
     private final Session CustomerSession;
+
     public CustomerRepository() {
-        this.CustomerSession = SessionBuilder.IntializeSession();
+        this.CustomerSession = SessionBuilder.InitializeSession();
     }
 
     @Override
@@ -85,6 +87,7 @@ public class CustomerRepository implements IRepository<CustomerEntity>
         catch (Exception e) {
             e.getStackTrace();
         }
+        return null;
     }
 
     @Override
@@ -93,8 +96,9 @@ public class CustomerRepository implements IRepository<CustomerEntity>
             List<CustomerEntity> Customers = this.CustomerSession.createCriteria(CustomerEntity.class).list();
             return Customers;
         }
-        catch (Exception e) {
+        catch (HibernateException e) {
             e.getStackTrace();
         }
+        return null;
     }  
 }

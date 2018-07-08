@@ -30,7 +30,6 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(kuuWorld.AccountResource.class);
-        resources.add(kuuWorld.BasketResource.class);
         resources.add(kuuWorld.CustomerResource.class);
         resources.add(kuuWorld.KuuWorld.class);
         resources.add(kuuWorld.StockResource.class);

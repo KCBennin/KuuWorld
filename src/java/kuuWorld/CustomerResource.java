@@ -15,25 +15,28 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
-import org.hibernate.cfg.Configuration;
+import kuuWorld.Repository.CustomerRepository;
 
 /**
  * REST Web Service
  *
  * @author kuuku
  */
+
 @Path("Customer")
 public class CustomerResource {
 
     @Context
     private UriInfo context;
-
+    private CustomerRepository Repository;
+        
     /**
      * Creates a new instance of CustomerResource
      */
     public CustomerResource() {
-        final Configuration configuration = new Configuration().configure();
+        this.Repository = new CustomerRepository();
     }
 
     /**
@@ -42,30 +45,20 @@ public class CustomerResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getCustomer() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public CustomerEntity getCustomer(@PathParam("Id") Integer Id) {
+        CustomerEntity Entity = this.Repository.GetEntity(Id);
+        return Entity;
     }
-
-    /**
-     * PUT method for updating or creating an instance of CustomerResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void updateCustomer(CustomerEntity content) {
-        
-    }
-    
+   
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    public void deleteCustomer(CustomerEntity Customer){
-        
+    public void deleteCustomer(@PathParam("Id") Integer Id){
+        this.Repository.RemoveResource(Id);        
     }
     
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public void addCustomer(CustomerEntity Customer) {
-        
+        this.Repository.AddResource(Customer);
     }
 }
